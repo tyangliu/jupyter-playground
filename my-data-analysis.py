@@ -13,7 +13,7 @@
 #     name: python3
 # ---
 
-# # My Data Analysis
+# # My Notebook
 
 # +
 import pandas as pd
@@ -26,13 +26,22 @@ from sklearn.datasets import load_iris, load_wine
 
 def rename_cols(df):
     return df.rename(columns={
-        col: stringcase.snakecase(col.replace("(cm)", "").strip())
+        col: stringcase.camelcase(col)
         for col in df.columns
     })
 
 
+# ## Iris Data
+
 iris_data = load_iris(as_frame=True)
 X, y = rename_cols(iris_data.data), iris_data.target
+
+X
+
+# ## Wine Data
+
+wine_data = load_wine(as_frame=True)
+X, y = rename_cols(wine_data.data), wine_data.target
 
 X
 
